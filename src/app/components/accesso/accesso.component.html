@@ -1,0 +1,51 @@
+<h1>Pagina di accesso</h1>
+
+<form [formGroup]="form">
+  <!-- Creo il campo di inserimento del nome -->
+
+  <div>
+    <label for="nome">Nome</label>
+    <input formControlName="nome" type="text" />
+  </div>
+
+  <div *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+    Il nome è richiesto per inviare i dati.
+  </div>
+
+  <!-- Creo il campo di inserimento per la email -->
+
+  <div>
+    <label for="email">E-mail</label>
+    <input formControlName="email" type="email" />
+  </div>
+
+  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+    Inserisci un'e-mail valida.
+  </div>
+
+  <!-- Creo il campo di inserimento della password -->
+
+  <div>
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" />
+  </div>
+
+  <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+    La password deve essere di minimo 6 caratteri.
+  </div>
+
+  <!-- Creo il campo di inserimento dei numeri di telefono -->
+
+  <div formArrayName="numeri">
+    <div *ngFor="let number of numeri.controls; let i = index">
+      <label for="numeri">Numero</label>
+      <input [formControlName]="i" type="number" />
+    </div>
+  </div>
+
+  <button (click)="addNumero()">Aggiungi un numero</button>
+
+  <button (click)="sendData()" [disabled]="form.invalid">
+    Invia Registrazione
+  </button>
+</form>

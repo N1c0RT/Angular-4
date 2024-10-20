@@ -1,0 +1,36 @@
+<form [formGroup]="myForm">
+  <div>
+    <label for="username">Username</label>
+    <input formControlName="username" type="text" />
+  </div>
+
+  <div
+    *ngIf="myForm.get('username')?.invalid && myForm.get('username')?.touched"
+  >
+    Lo username è richiesto per inviare i dati.
+  </div>
+
+  <div>
+    <label for="email">E-mail</label>
+    <input formControlName="email" type="email" />
+  </div>
+
+  <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+    Inserisci un'e-mail valida.
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" />
+  </div>
+
+  <div
+    *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched"
+  >
+    La password deve essere di minimo 6 caratteri.
+  </div>
+
+  <button (click)="sendData()" [disabled]="myForm.invalid">
+    Invia registrazione
+  </button>
+</form>

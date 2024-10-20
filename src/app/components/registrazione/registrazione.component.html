@@ -1,0 +1,37 @@
+<!-- Questo è un template (html) driven form -->
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div>
+    <label for="username">Username</label>
+    <input
+      [(ngModel)]="utente.username"
+      type="text"
+      name="username"
+      id="username"
+      required
+    />
+  </div>
+  <div>
+    <label for="email">E-mail</label>
+    <input
+      [(ngModel)]="utente.email"
+      type="email"
+      name="email"
+      id="email"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input
+      [(ngModel)]="utente.password"
+      type="password"
+      name="password"
+      id="password"
+      required
+    />
+  </div>
+
+  <button type="submit">Invia Registrazione</button>
+</form>
